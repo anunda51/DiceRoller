@@ -11,6 +11,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,14 +23,19 @@ class MainActivity : AppCompatActivity() {
 
         val resetButton:Button = findViewById(R.id.reset_button)
         resetButton.setOnClickListener{reset()}
-
-
-
     }
 
     private fun rollDice(){
+        diceImage.setImageResource(getRandomDiceImage())
+    }
+
+    private  fun reset(){
+        diceImage.setImageResource(R.drawable.empty_dice)
+    }
+
+    private fun getRandomDiceImage() : Int{
         val randomInt = Random().nextInt(6) + 1
-        val drawableResource = when (randomInt) {
+        return when (randomInt) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -37,10 +43,5 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        diceImage.setImageResource(drawableResource)
-    }
-
-    private  fun reset(){
-        diceImage.setImageResource(R.drawable.empty_dice)
     }
 }
