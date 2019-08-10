@@ -41,6 +41,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private  fun reset(){
-
+        diceImage.setImageResource(R.drawable.empty_dice)
     }
 }
